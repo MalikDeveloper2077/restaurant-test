@@ -21,6 +21,10 @@ class FoodCategory(TimeStampedModel):
     def __str__(self):
         return self.name_ru
 
+    @property
+    def published_food(self):
+        return self.food.filter(is_publish=True)
+
     class Meta:
         verbose_name = 'Раздел меню'
         verbose_name_plural = 'Разделы меню'
